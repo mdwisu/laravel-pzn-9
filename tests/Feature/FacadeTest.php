@@ -31,4 +31,18 @@ class FacadeTest extends TestCase
 
         var_dump(Config::all());
     }
+
+    public function testFacadeMock()
+    {
+        // Mocking the Config facade
+        Config::shouldReceive('get')
+            ->with('contoh.author.first', null) // Menambahkan default value jika tidak ditemukan
+            ->andReturn('Dwi');
+
+        // Panggil config helper
+        $firstName = config('contoh.author.first');
+
+        // Verifikasi hasil
+        self::assertEquals('Dwi', $firstName);
+    }
 }
