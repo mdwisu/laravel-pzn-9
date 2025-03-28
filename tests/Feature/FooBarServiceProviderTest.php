@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class FooBarServiceProviderTest extends TestCase
 {
+
     public function test_foo_bar_service_provider()
     {
         $foo1 = $this->app->make(Foo::class); // new Foo()
@@ -32,5 +33,9 @@ class FooBarServiceProviderTest extends TestCase
         self::assertSame($helloService1, $helloService2);
 
         self::assertEquals('Halo Dwi', $helloService1->hello('Dwi'));
+    }
+
+    public function testEmpty(){
+        self::assertTrue(true);
     }
 }
